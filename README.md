@@ -1,6 +1,8 @@
 # Loupy
 Export clusters, annotations and projections from ScanPy's AnnData object to Loupe Cell Browser's .cloupe file format.
 
+![PBMC3k Clusters Loupe](examples/pbmc3k_clusters_loupe.png)
+
 
 Uses LoupeR from 10X: [https://github.com/10XGenomics/loupeR](https://github.com/10XGenomics/loupeR)
 
