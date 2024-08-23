@@ -6,6 +6,24 @@ Uses LoupeR from 10X: [https://github.com/10XGenomics/loupeR](https://github.com
 
 # Usage
 
+```bash
+usage: loupy.py [-h] [--projections PROJECTIONS] [--categoricals CATEGORICALS] [--layer LAYER] input output
+
+Export clusters, annotations and projections from ScanPy's AnnData object to Loupe Cell Browser's .cloupe file format.
+
+positional arguments:
+  input                 Input file
+  output                Output file
+
+options:
+  -h, --help            show this help message and exit
+  --projections PROJECTIONS
+                        Comma-separated names (Without 'X_'-prefix) of the projections to be exported. Should be found in 'adata.obsm_keys()' and be with two dimensions. Exports all projections by default.
+  --categoricals CATEGORICALS
+                        Comma-separated names of the categorical annotations to be exported. Should be found in 'adata.obs_keys()'. Exports all categorical features from adata.obs by default.
+  --layer LAYER         Name of the layer to be exported. If not provided, adata.X will be exported.
+```
+
 ## Export all projections and categorical annotations
  - `python loupy/loupy.py pbmc3k_analysed.h5ad pbmc3k.cloupe --layer=counts`
 
