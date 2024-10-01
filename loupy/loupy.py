@@ -3,8 +3,10 @@ import argparse
 import uuid
 from typing import Optional
 
+import pandas as pd
 import rpy2.robjects
 import rpy2.robjects.packages
+from rpy2.robjects import conversion, default_converter
 import scanpy as sc
 import scipy
 import rpy2
@@ -28,6 +30,10 @@ def export_to_cloupe(adata: sc.AnnData, output: str, projection_names: Optional[
         adata.X = adata.X.tocsr()
         
     del adata.layers
+
+    for obsm in adata.obsm_keys():
+        if isinstance(adata.obsm[obsm], pd.DataFrame):
+            del adata.obsm[obsm]
 
     adata.write_h5ad(f"{temp_name}.h5ad")
 
@@ -87,8 +93,9 @@ if __name__ == "__main__":
         if layer not in adata.layers.keys():
             raise ValueError(f"{layer} is not found in 'adata.layers'")
 
-    export_to_cloupe(
-        adata, args.output,
-        projection_names=projection_names, categorical_names=categorical_names,
-        layer=layer
-    )
+    with conversion.localconverter(default_converter):
+        export_to_cloupe(
+            adata, args.output,
+            projection_names=projection_names, categorical_names=categorical_names,
+            layer=layer
+        )
