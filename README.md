@@ -8,7 +8,7 @@ Uses LoupeR from 10X: [https://github.com/10XGenomics/loupeR](https://github.com
 
 # Installation
 ```bash
-pip install ./loupy
+conda install -c conda-forge -c bioconda lutrarutra::loupy
 ```
 
 # Usage

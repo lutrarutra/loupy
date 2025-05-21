@@ -4,10 +4,10 @@ packages = ["loupy"]
 [project]
 # Basic project metadata
 name = "loupy"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = [
-    { name = "Artur Gynter", email = "artur.gynter@proton.me" }
+    { name = "lutrarutra", email = "lutrarutra@pm.me" }
 ]
 license = { file = "LICENSE" }
 readme = "README.md"
@@ -16,3 +16,6 @@ dependencies = []
 
 [project.scripts]
 loupy = "loupy.cli:main"
+
+[tool.setuptools.package-data]
+loupy = ["loupy.R"]

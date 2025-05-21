@@ -2,6 +2,16 @@ create_loupe_file <- function(h5ad_filename, output_dir, output_name, projection
     library(Seurat)
     library(SeuratData)
     library(SeuratDisk)
+
+    if (!requireNamespace("loupeR", quietly = TRUE)) {
+        options(repos = c(CRAN = "https://cloud.r-project.org"))
+        if (!requireNamespace("remotes", quietly = TRUE)) {
+            install.packages("remotes")
+        }
+        remotes::install_github("10XGenomics/loupeR", upgrade="never")
+        loupeR::setup()
+    }
+
     library(loupeR)
     library(rhdf5)
     
